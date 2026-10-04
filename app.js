@@ -144,7 +144,6 @@ servicesNavItem.addEventListener('pointerleave', (event) => {
   if (servicesMenuCanHover.matches && event.pointerType !== 'touch') setServicesMenuOpen(false);
 });
 
-servicesMenuToggle.addEventListener('focus', () => setServicesMenuOpen(true));
 servicesNavItem.addEventListener('focusout', (event) => {
   if (!servicesNavItem.contains(event.relatedTarget)) setServicesMenuOpen(false);
 });

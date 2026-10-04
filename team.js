@@ -54,7 +54,15 @@ function setServicesMenuOpen(isOpen) {
   servicesMenuToggle.setAttribute('aria-expanded', String(isOpen));
   servicesMenu.hidden = !isOpen;
 }
-servicesMenuToggle.addEventListener('click', () => {
+const servicesMenuCanHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+servicesNavItem.addEventListener('pointerenter', (event) => {
+  if (servicesMenuCanHover.matches && event.pointerType !== 'touch') setServicesMenuOpen(true);
+});
+servicesNavItem.addEventListener('pointerleave', (event) => {
+  if (servicesMenuCanHover.matches && event.pointerType !== 'touch') setServicesMenuOpen(false);
+});
+servicesMenuToggle.addEventListener('click', (event) => {
+  if (servicesMenuCanHover.matches && event.detail !== 0) return;
   setServicesMenuOpen(servicesMenuToggle.getAttribute('aria-expanded') !== 'true');
 });
 servicesNavItem.addEventListener('focusout', (event) => {

@@ -43,7 +43,10 @@ servicesNavItem.addEventListener('pointerenter', (event) => {
 servicesNavItem.addEventListener('pointerleave', (event) => {
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && event.pointerType !== 'touch') setServicesMenuOpen(false);
 });
-servicesMenuToggle.addEventListener('click', () => setServicesMenuOpen(servicesMenuToggle.getAttribute('aria-expanded') !== 'true'));
+servicesMenuToggle.addEventListener('click', (event) => {
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && event.detail !== 0) return;
+  setServicesMenuOpen(servicesMenuToggle.getAttribute('aria-expanded') !== 'true');
+});
 servicesNavItem.addEventListener('focusout', (event) => {
   if (!servicesNavItem.contains(event.relatedTarget)) setServicesMenuOpen(false);
 });
