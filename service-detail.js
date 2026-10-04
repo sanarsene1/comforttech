@@ -141,7 +141,7 @@ function renderPage() {
       </div>
     </section>
 
-    ${serviceKey === 'installation' ? `
+    ${serviceKey === 'installation' || serviceKey === 'abonnement' ? `
     <section class="detail-access-section">
       <div class="detail-shell">
         <div class="detail-section-head detail-access-head">
@@ -242,7 +242,6 @@ servicesNavItem.addEventListener('pointerenter', (event) => {
 servicesNavItem.addEventListener('pointerleave', (event) => {
   if (servicesMenuCanHover.matches && event.pointerType !== 'touch') setServicesMenuOpen(false);
 });
-servicesMenuToggle.addEventListener('focus', () => setServicesMenuOpen(true));
 servicesNavItem.addEventListener('focusout', (event) => {
   if (!servicesNavItem.contains(event.relatedTarget)) setServicesMenuOpen(false);
 });
